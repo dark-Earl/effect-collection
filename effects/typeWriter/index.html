@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自动打字机</title>
+    <link rel="stylesheet" href="../../static/css/main.css"/>
+    <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../../static/js/onlyWeixin.js"></script>
+    <style type="text/css">
+
+        body{
+            background-color: #000;
+        }
+
+
+        .typewriter-effect {
+            display: flex;
+            justify-content: center;
+            font-family: monospace;
+            color: #03a9f4;
+            font-size: large;
+        }
+
+        .typewriter-effect > .text {
+            max-width: 0;
+            /*控制字体滚动速度*/
+            animation: typing 10s steps(var(--characters)) infinite;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .typewriter-effect:after {
+            content: " |";
+            animation: blink 1s infinite;
+            animation-timing-function: step-end;
+        }
+
+        @keyframes typing {
+            75%,
+            100% {
+                max-width: calc(var(--characters) * 1ch);
+            }
+        }
+
+        @keyframes blink {
+            0%,
+            75%,
+            100% {
+                opacity: 1;
+            }
+            25% {
+                opacity: 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<!--返回上一步-->
+<!-- <div>
+    <div class="ui-header">
+        <a href="javascript:history.back();" class="ui-back">
+            <div class="ui-trigger"></div>
+        </a>
+        <div class="ui-title">自动打字机</div>
+    </div>
+</div> -->
+<div class="typewriter-effect">
+    <div class="text" id="typewriter-text"></div>
+</div>
+
+
+    <script type="text/javascript">
+    const typeWriter = document.getElementById('typewriter-text');
+    const text = '人生就是一次充满未知的旅行，在乎的是治途的风景，在乎的是看风景的心情，旅行不会因为美丽的风景终止。走过的路成为背后的风景，不能回头不能停留，若此刻停留，将会错过更好的风景，保持一份平和，保持一份清醒?享受每一刻的感觉，欣赏每一处的风景，这就是人生.';
+
+    typeWriter.innerHTML = text;
+    typeWriter.style.setProperty('--characters', text.length);
+
+
+
+    </script>
+</body>
+</html>
