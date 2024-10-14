@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>夜空</title>
+    <script type="text/javascript" src="../../static/js/onlyWeixin.js"></script>
+    <link rel="stylesheet" href="../../static/css/main.css"/>
+    <style>
+        body{
+            background: #000;
+        }
+        .star{
+            background-image: url(../../static/img/xin.png) ;
+            width: 53px;
+            height:30px;
+            background-repeat:no-repeat;
+            background-position-x:center;
+            background-position-y:center;
+            position:fixed;
+            animation: flash 2s linear infinite;
+        }
+        .star:hover{
+            transform: scale(3, 3) rotate(180deg) !important;
+            transition: all 1s;
+        }
+        @keyframes flash {
+            0%{opacity: 0.2}
+            50%{opacity: 1}
+            100%{opacity: 0.2}
+        }
+
+        #wrapper {
+            position:absolute;
+            top:50px;
+            left:80%;
+            width:200px;
+            height:200px;
+            margin-left:-100px;
+            animation: moonline 5s linear;
+        }
+        @-webkit-keyframes moonline {
+            0% {top:250px;left:0%;opacity:0;}
+            30% {top:150px;left:40%;opacity:0.5;}
+            80% {top:50px;left:80%;opacity:1;}
+        }
+        #circle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background-color: #EFEFEF;
+            box-shadow:0 0 40px #FFFFFF;
+            border-radius: 100px;
+            animation:moonlight 5s linear;
+
+        }
+        @-webkit-keyframes moonlight {
+            0% {-webkit-box-shadow:0 0 10px #FFFFFF;}
+            30% {-webkit-box-shadow:0 0 15px #FFFFFF;}
+            40% {-webkit-box-shadow:0 0 20px #FFFFFF;}
+            50% {-webkit-box-shadow:0 0 25px #FFFFFF;}
+            100% {-webkit-box-shadow:0 0 30px #FFFFFF;}
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+<!--返回上一步-->
+<!-- <div>
+    <div class="ui-header">
+        <a href="javascript:history.back();" class="ui-back">
+            <div class="ui-trigger"></div>
+        </a>
+        <div class="ui-title">夜空</div>
+    </div>
+</div> -->
+<!--月亮-->
+<div id="wrapper">
+    <div id="circle"></div>
+</div>
+
+    <script>
+    var screenW = document.documentElement.clientWidth;
+    var screenH = document.documentElement.clientHeight;
+    for(var i=0; i<150; i++){
+        var span = document.createElement('span');
+        document.body.appendChild(span);
+        var x = parseInt(Math.random() * screenW);
+        var y = parseInt(Math.random() * screenH);
+        span.style.left = x + 'px';
+        span.style.top = y + 'px';
+        span.style.zIndex = "0";
+        span.className='star';
+        var scale = Math.random() * 1.5;
+        span.style.transform = 'scale('+ scale + ', ' + scale + ')';
+        var rate = Math.random() * 1.5;
+        span.style.animationDelay = rate + 's';
+
+    }
+    </script>
+</body>
+</html>
